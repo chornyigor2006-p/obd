@@ -48,7 +48,7 @@ SELECT * FROM soul WHERE ID = 742346234427;
 
 і скріни результатів
 
-![працює?](res1.png)
+![працює?](images/res1.png)
 
 ![працює?](images/res2.png)
 
