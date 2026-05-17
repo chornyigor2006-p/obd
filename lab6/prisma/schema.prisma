@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model layer {
+  numerical_order        Int    @id @default(autoincrement())
+  amount_of_souls_inside BigInt
+}
+
+model demon {
+  id          Int          @id @default(autoincrement())
+  full_name   String       @db.VarChar(32)
+  age         Int
+  status_a    status
+  punishments punishment[]
+  artifacts   artifact[]
+}
+
+model soul {
+  id              BigInt     @id
+  full_name       String     @db.VarChar(32)
+  soul_sins       soul_sin[]
+}
+
+model sin {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique @db.VarChar(32)
+  punishments punishment[]
+  soul_sins   soul_sin[]
+}
+
+model soul_sin {
+  soul_id BigInt
+  sin_id  Int
+  sin     sin    @relation(fields: [sin_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  soul    soul   @relation(fields: [soul_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([soul_id, sin_id])
+}
+
+model punishment {
+  id                 Int    @id @default(autoincrement())
+  name_of_punishment String @db.VarChar(50)
+  sin_id             Int?
+  is_active          Boolean
+  performing_demon   Int?
+  demon              demon? @relation(fields: [performing_demon], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  sin                sin?   @relation(fields: [sin_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+enum status {
+  lesser
+  greater
+  supreme
+}
+
+model artifact {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(50)
+  power_level Int
+  demon_id    Int?
+  demon       demon? @relation(fields: [demon_id], references: [id])
+}
