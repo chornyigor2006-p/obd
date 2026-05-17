@@ -37,7 +37,7 @@ date_of_arrival
 ці зміни по більшій частині лише ради того щоб показати що я розумію функціонал і завдання 
 <img width="758" height="395" alt="Снимок экрана 2026-05-17 132142" src="https://github.com/user-attachments/assets/ca770dfb-f55a-4eeb-8f29-93f7b6f998bc" />
 <img width="877" height="326" alt="Снимок экрана 2026-05-17 132131" src="https://github.com/user-attachments/assets/e454ee75-bb25-4273-ab9d-a57c232563e1" />
-
+ось як все виглядає у prisma studio
 
 # Висновок
 я зрозумів як працювати базово з prisma, як прибирати та додавати щось нове до бази даних з її допомогою
