@@ -12,8 +12,26 @@
 
 Початкову базу даних робив через Neontech(бо в мене pgAdmin видає 1393 помилок чомусь і ну це легше було)
 
-у проект було додано нову таблицю artifact
+у проект було додано нову таблицю artifact, 
+```
+CREATE TABLE "artifact" (
+    "id" SERIAL NOT NULL,
+    "name" VARCHAR(50) NOT NULL,
+    "power_level" INTEGER NOT NULL,
+    "demon_id" INTEGER,
 
-але перед мыграцією ще робив '''npx prisma migrate reset ''' бо в мене воно там щось просило не зрозумів що саме, але це пофіксило
+    CONSTRAINT "artifact_pkey" PRIMARY KEY ("id")
+);
+```
+та додано до punishment
+```
+"is_active" BOOLEAN NOT NULL,
+```
+i прибрано з soul
+```
+date_of_arrival
+```
+міграцїї описав у migration notes 
+але перед міграцією ще робив '''npx prisma migrate reset ''' бо в мене воно там щось просило не зрозумів що саме, але це пофіксило
 
-# Висновок
+# Висновок я зрозумів як працювати базово з prisma, як прибирати та додавати щось нове до бази даних з її допомогою
